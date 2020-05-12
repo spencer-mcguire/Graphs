@@ -96,9 +96,11 @@ def earliest_ancestor(ancestors, starting_node):
     #print(g.vertices, "********************")
     all_paths = []
     # implement the vertex
+    #print('v',g.vertices)
     for vertex in g.vertices:
+        #print(vertex)
         dfs_call = g.dfs(vertex, starting_node)
-        print(dfs_call)
+        #print(dfs_call)
         if dfs_call is not None:
             if len(dfs_call) > len(all_paths):
                 all_paths = dfs_call
@@ -106,7 +108,7 @@ def earliest_ancestor(ancestors, starting_node):
                 if dfs_call[0] < all_paths[0]:
                     all_paths = dfs_call
     # needs to return in order to
-    if len(all_paths) == 1:
+    if len(all_paths) <= 1:
         return -1
     return all_paths[0]
     # CONDITIONALS
