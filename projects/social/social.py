@@ -88,13 +88,13 @@ class SocialGraph:
             path = q.dequeue()
             current_person = path[-1]
             
+            if current_person not in visited:
+                visited[current_person] = path
 
             for friend in self.friendships[current_person]: 
-                if friend not in visited.keys():
-                    new_path = list(path)
-                    new_path.append(friend)
-                    q.enqueue(new_path)
-                    visited[current_person] = new_path
+                if friend not in visited:
+                    
+                    q.enqueue(path+[friend])
         return visited
 
 
